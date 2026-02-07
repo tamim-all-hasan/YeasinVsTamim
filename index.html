@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>4.5 Year Success Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --card: #141420;
+      --text: #e6e6eb;
+      --muted: #9a9aa5;
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #151528, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      padding: 32px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      text-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .vs {
+      text-align: center;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #2a2a3a;
+      text-align: left;
+    }
+
+    th {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .rules li {
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+
+    .countdown {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-top: 12px;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>4.5 Year Success Challenge</h1>
+    <div class="subtitle">Final Comparison — 18 April 2030, 1:03 AM (In Sha Allah)</div>
+
+    <div class="card">
+      <div class="vs">TAMIM ⚔ YEASIN</div>
+      <div class="countdown" id="countdown">Loading countdown...</div>
+    </div>
+
+    <div class="card">
+      <h2>Success Factors</h2>
+      <table>
+        <tr>
+          <th>Factor</th>
+          <th>Weight (%)</th>
+        </tr>
+        <tr><td>Location flexibility</td><td>20</td></tr>
+        <tr><td>Life satisfaction</td><td>20</td></tr>
+        <tr><td>Health / lifestyle readiness</td><td>10</td></tr>
+        <tr><td>Net worth / financial freedom</td><td>20</td></tr>
+        <tr><td>Social acceptance / network</td><td>15</td></tr>
+        <tr><td>Skills / employability</td><td>15</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>General Rules</h2>
+      <ul class="rules">
+        <li>Challenge duration is fixed: 18 April 2030, 1:03 AM (In Sha Allah)</li>
+        <li>No changes allowed to factors or weights after the start date</li>
+        <li>Final comparison requires self-assessment and mutual agreement</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Additional Rules</h2>
+      <ul class="rules">
+        <li>Each factor scored 0–10 at final review</li>
+        <li>Proof encouraged; fake flex = disqualification</li>
+        <li>Self-growth is prioritized over ego competition</li>
+        <li>Tie-breaker: Life Satisfaction → Skills</li>
+      </ul>
+    </div>
+
+    <footer>
+      A silent pact. A loud result.
+    </footer>
+  </div>
+
+  <script>
+    const targetDate = new Date("2030-04-18T01:03:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerText = "The comparison day has arrived.";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerText =
+        `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+    }, 1000);
+  </script>
+</body>
+</html>
